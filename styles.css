@@ -29,3 +29,41 @@ a {
 	color: #1a0dab;
 	text-decoration: none;
 }
+
+.photo-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.photo-gallery figure {
+	flex: 1 1 calc(33.333% - 20px);
+	margin: 0;
+}
+
+.photo-gallery img {
+	width: 100%;
+	height: auto;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+}
+
+.photo-gallery figcaption {
+	text-align: center;
+	font-size: 0.9em;
+	color: #666;
+	margin-top: 5px;
+}
+
+/* 响应式布局 */
+@media (max-width: 800px) {
+	.photo-gallery figure {
+		flex: 1 1 calc(50% - 20px);
+	}
+}
+
+@media (max-width: 500px) {
+	.photo-gallery figure {
+		flex: 1 1 100%;
+	}
+}
