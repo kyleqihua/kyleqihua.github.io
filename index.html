@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Kyle Huang</title>
+		<title>{{ site.title }}</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
@@ -52,29 +52,20 @@
 			<section id="sunrise-photos">
 				<h2>Sunrise Photos</h2>
 				<div class="photo-gallery">
+					{% for image in site.data.images %}
 					<figure>
-						<img
-							src="images/sunrises/2025-01-01-sunrise1.JPG"
-							alt="Sunrise on 2025-01-01"
-						/>
-						<figcaption>Sunrise on 2025-01-01</figcaption>
+						<img src="{{ image.path }}" alt="Sunrise on {{ image.date }}" />
+						<figcaption>Sunrise on {{ image.date }}</figcaption>
 					</figure>
-					<figure>
-						<img
-							src="images/sunrises/2025-01-01-sunrise2.JPG"
-							alt="Sunrise on 2025-01-01"
-						/>
-						<figcaption>Sunrise on 2025-01-01</figcaption>
-					</figure>
-					<figure>
-						<img
-							src="images/sunrises/2025-01-01-sunrise3.JPG"
-							alt="Sunrise on 2025-01-01"
-						/>
-						<figcaption>Sunrise on 2025-01-01</figcaption>
-					</figure>
+					{% endfor %}
 				</div>
 			</section>
 		</main>
+
+		<!-- 引入 exif-js 库 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+
+		<!-- 引入自定义的脚本文件 -->
+		<script src="script.js"></script>
 	</body>
 </html>
