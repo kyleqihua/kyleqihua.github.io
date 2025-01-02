@@ -3,14 +3,14 @@ import yaml
 import exifread
 
 image_directory = '../images/sunrises'
-output_file = 'images.yml'
+output_file = './images.yml'
 
 image_data = []
 
 for filename in sorted(os.listdir(image_directory)):
     if filename.lower().endswith(('.jpg', '.jpeg')):
-        filepath = f"{image_directory}/{filename}"
-        with open(filepath, 'rb') as img_file:
+        filepath = f"/{image_directory}/{filename}"
+        with open(f"{image_directory}/{filename}", 'rb') as img_file:
             tags = exifread.process_file(img_file)
             date_taken = tags.get('EXIF DateTimeOriginal') or tags.get('Image DateTime')
             if date_taken:
