@@ -65,8 +65,11 @@ title: "Kyle Huang"
 					<div class="date-group">
 						{% for image in date_group.items %}
 						<figure>
-							<img src="{{ image.path }}" alt="Sunrise on {{ image.date }}" />
-							<figcaption>Sunrise on {{ image.date }}</figcaption>
+							<img src="{{ image.path }}" alt="Sunrise at {{ image.time }}" />
+							<figcaption>
+								{% if image.time != 'Unknown Time' %} Sunrise at {{ image.time
+								}} {% else %} Time Unknown {% endif %}
+							</figcaption>
 						</figure>
 						{% endfor %}
 					</div>
