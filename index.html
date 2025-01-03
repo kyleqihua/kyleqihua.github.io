@@ -58,11 +58,18 @@ title: "Kyle Huang"
 			<section id="sunrise-photos">
 				<h2>Sunrise Photos</h2>
 				<div class="photo-gallery">
-					{% for image in site.data.images %}
-					<figure>
-						<img src="{{ image.path }}" alt="Sunrise on {{ image.date }}" />
-						<figcaption>Sunrise on {{ image.date }}</figcaption>
-					</figure>
+					{% assign sorted_images = site.data.images | sort: 'date' | reverse %}
+					{% assign images_by_date = sorted_images | group_by: 'date' %} {% for
+					date_group in images_by_date %}
+					<h3>{{ date_group.name }}</h3>
+					<div class="date-group">
+						{% for image in date_group.items %}
+						<figure>
+							<img src="{{ image.path }}" alt="Sunrise on {{ image.date }}" />
+							<figcaption>Sunrise on {{ image.date }}</figcaption>
+						</figure>
+						{% endfor %}
+					</div>
 					{% endfor %}
 				</div>
 			</section>
