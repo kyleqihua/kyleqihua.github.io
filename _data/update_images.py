@@ -56,4 +56,4 @@ for filename in sorted(os.listdir(image_directory)):
 
 # Write to YAML
 with open(output_file, 'w') as file:
-    yaml.dump(image_data, file)
+    yaml.dump(image_data, file, default_style='"')  # Force quotes without !str tag
